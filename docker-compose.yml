@@ -23,5 +23,14 @@ services:
       - POSTGRES_PASSWORD=hello_flask
       - POSTGRES_DB=hello_flask_dev
 
+  node:
+    image: node:12
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./services/web/project/frontend/:/srv/app
+    working_dir: /srv/app
+    command: 'yarn serve'
+
 volumes:
   postgres_data:
