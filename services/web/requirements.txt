@@ -9,3 +9,5 @@ psycopg2-binary==2.8.6
 marshmallow==3.13.0
 flask-marshmallow==0.14.0
 marshmallow-sqlalchemy==0.26.1
+flask-cors==3.0.10
+pycpfcnpj==1.5.1
