@@ -4,6 +4,8 @@ Rodar make help
 
 Não é necessário rodar nenhuma migration, o próprio build do projeto faz isso
 
+Acessar em http://localhost:8080
+
 Tabela para persistência:
 
 CREATE TABLE IF NOT EXISTS public.atendimentos
