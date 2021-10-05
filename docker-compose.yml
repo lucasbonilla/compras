@@ -30,7 +30,7 @@ services:
     volumes:
       - ./services/web/project/frontend/:/srv/app
     working_dir: /srv/app
-    command: 'yarn serve'
+    command: sh -c 'npm install;yarn serve'
 
 volumes:
   postgres_data:

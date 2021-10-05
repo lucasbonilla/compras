@@ -40,7 +40,7 @@ help:
 	@echo "\t\tbuild"
 	@echo "\t\t\t- Constrói todos os conteiners"
 	@echo "\t\tup"
-	@echo "\t\t\t- Carrega a aplicação"
+	@echo "\t\t\t- Carrega a aplicação (pode demorar um tempo na primeira execução :S )"
 	@echo "\t\tlogs"
 	@echo "\t\t\t- Mostra os logs dos serviços"
 	@echo "\t\tbuild-up"
