@@ -16,6 +16,10 @@ UPLOAD_FOLDER = 'uploads/'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.isdir(app.config['UPLOAD_FOLDER']):
+    os.mkdir(app.config['UPLOAD_FOLDER'])
+
 cors = CORS(app)
 app.config.from_object("project.config.Config")
 db = SQLAlchemy(app)
@@ -147,6 +151,10 @@ def thread_cleanup(thread_name, data, generate=False):
     print("Iniciando thread %s" % thread_name)
     cleanup_data = []
     if generate:
+
+        if(not os.path.isdir(app.config['UPLOAD_FOLDER']+"clean")):
+            os.mkdir(app.config['UPLOAD_FOLDER']+"clean")
+
         # validação feita somente para ver se o arquivo estava sendo gerado corretamente
         with open(app.config['UPLOAD_FOLDER']+"clean/"+thread_name,'w') as file:
             for line in data:
@@ -154,7 +162,7 @@ def thread_cleanup(thread_name, data, generate=False):
         return
     else:
         for i in range(len(data)):
-            # remove as veirgulas de cada linha para tratar os valores decimais e
+            # remove as vírgulas de cada linha para tratar os valores decimais e
             # remove os espaços transformando tudo para uma linha separada por vírgulas
             # por fim gera um array desses dados
             new_user = re.sub('\s+', ',', re.sub(',', '.', data[i]))[:-1].split(',')
