@@ -15,10 +15,7 @@
 </template>
 
 <script>
-import VueTableLite from 'vue3-table-lite'
 export default {
-
-
   data(){
     return {
       file: '',
