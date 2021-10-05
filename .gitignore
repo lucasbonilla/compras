@@ -131,3 +131,4 @@ dmypy.json
 # node_modules
 services/web/project/frontend/node_modules
 services/web/uploads
+services/web/project/frontend/package-lock.json

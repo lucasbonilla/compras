@@ -6,16 +6,23 @@
       </label>
         <button v-on:click="submitFile()">Submit</button>
     </div>
+    <br>
+    <div>
+      <label>{{status}}</label>
+    </div>
+
   </div>
 </template>
 
 <script>
-
+import VueTableLite from 'vue3-table-lite'
 export default {
+
 
   data(){
     return {
-      file: ''
+      file: '',
+      status: 'aguardando upload'
     }
   },
   name: 'HelloWorld',
@@ -27,6 +34,7 @@ export default {
       this.file = this.$refs.file.files[0];
     },
     submitFile(){
+      this.status = 'processando...'
       const axios = require('axios');
       let formData = new FormData();
       formData.append('file', this.file);
@@ -38,7 +46,9 @@ export default {
         url: "http://localhost:5000/upload-file",
         data: formData
       }).then(res => {
-        console.log(res);
+        if(res.data.processed){
+          this.status = 'Processamento concluído!'
+        }
       }).catch(error => {
         console.log(error)
         if (!error.response) {

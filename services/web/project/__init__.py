@@ -101,9 +101,9 @@ def upload_file():
     if uploaded_file.filename != '':
         print(app.config['UPLOAD_FOLDER']+uploaded_file.filename)
         uploaded_file.save(app.config['UPLOAD_FOLDER']+uploaded_file.filename)
-    # print(file)
+    process_file()
+    return jsonify(processed=True)
 
-@app.route("/process-file")
 def process_file():
     with open(app.config['UPLOAD_FOLDER']+"base_teste.txt",'r') as file:
         lines = file.readlines()[1:]
@@ -111,6 +111,7 @@ def process_file():
     iteration = 1
     start = 0
     insertThreads = []
+    # "corta" as linhas de 10000 em 10000
     for step in range(10000, len(lines), 10000):
         insertThreads.append(threading.Thread(target=thread_cleanup, args=("thread_"+str(iteration), lines[start:step])))
             
